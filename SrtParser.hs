@@ -1,4 +1,4 @@
-module Main where
+module SrtParser where
 
 {-
     A module that parses SubRip subtitle files (.srt) files that looks like this:
