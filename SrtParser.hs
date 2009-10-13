@@ -25,7 +25,7 @@ module SrtParser where
 
 import Text.ParserCombinators.Parsec
 
-data Subtitle = Subtitle Int [Double] String
+data Subtitle = Subtitle {subtitleId :: Int, subtitleTimes :: [Double], subtitleLines :: String}
                 deriving (Show)
 
 
@@ -42,7 +42,9 @@ newlinechar = do
 
 twonewlines :: Parser ()
 twonewlines = do
-    count 2 (newlinechar)
+    newlinechar
+    skipMany (char ' ')     -- Consider empty lines..
+    newlinechar
     return ()
 
 ending :: Parser ()
