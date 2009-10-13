@@ -1,7 +1,5 @@
 module SimpleOperations where
-
-import SrtParser
-
+import DataTypes
 
 -- Shifting Subtitles
 shiftsubtitles :: [Subtitle] -> Double -> [Subtitle]

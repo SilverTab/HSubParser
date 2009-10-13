@@ -3,13 +3,13 @@ module Main where
 import System.Console.CmdArgs
 import Control.Applicative hiding (empty)
 import System.Environment
-import SrtParser
+import qualified SubParsers.SrtParser as Srt
 import qualified SimpleOperations
 
 main :: IO ()
 main = do
     n <- getProgName
-    m <- cmdArgs "HSub v1, (C) Jean-Nicolas Jolivet 2009" [shift]
+    m <- cmdArgs (n ++ " v1, (C) Jean-Nicolas Jolivet 2009") [shift]
     v <- verbosity
     runapp m v
 
@@ -20,7 +20,7 @@ data Verbosity = Quiet | Normal | Verbose
 
 runapp :: HSubMode -> Verbosity -> IO ()
 runapp (Shift sec inf outf) v = do
-    pr <- parsesrt inf
+    pr <- Srt.parsesrt inf
     print ("Shifting sub by: " ++ (show sec))
     print (SimpleOperations.shiftsubtitles pr sec)
 

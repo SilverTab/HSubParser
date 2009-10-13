@@ -1,4 +1,4 @@
-module SrtParser where
+module SubParsers.SrtParser where
 
 {-
     A module that parses SubRip subtitle files (.srt) files that looks like this:
@@ -24,9 +24,7 @@ module SrtParser where
 -}
 
 import Text.ParserCombinators.Parsec
-
-data Subtitle = Subtitle {subtitleId :: Int, subtitleTimes :: [Double], subtitleLines :: String}
-                deriving (Show)
+import DataTypes
 
 
 subtitleID :: Parser Int
